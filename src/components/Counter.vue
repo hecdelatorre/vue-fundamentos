@@ -15,12 +15,18 @@ export default {
     title: String,
     start: {
       type: Number,
-      required: true
+      required: true,
+      validator( value ) {
+        return value >= 0
+      }
     },
     raise: {
       type: Number,
-      default: 2
+      default: 2,
       //required: true
+      validator( value ) {
+        return value >= 2
+      }
     }
   },
   data() {
