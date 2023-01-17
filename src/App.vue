@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="@/assets/logo.png">
-  <Counter title="Contador"/>
-  <Counter/>
+  <Counter v-bind:start="1" v-bind:raise="2"/>
+  <Counter :start="2" :raise="3"/>
 </template>
 
 <script>

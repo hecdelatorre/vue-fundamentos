@@ -1,6 +1,6 @@
 <template>
   <h2>{{ customTitle }}</h2>
-  <p>{{ counter }} <sup>2</sup> = {{ squareCounter }}</p>
+  <p>{{ counter }} <sup>{{ pow }}</sup> = {{ squareCounter }}</p>
 
   <div>
     <button class="btn btn-primary" @click="increase">+1</button>
@@ -11,10 +11,22 @@
 
 <script>
 export default {
-  props: ['title'],
+  props: {
+    title: String,
+    start: {
+      type: Number,
+      required: true
+    },
+    raise: {
+      type: Number,
+      default: 2
+      //required: true
+    }
+  },
   data() {
     return {
-      counter: 5
+      counter: this.start,
+      pow: this.raise
     }
   },
   methods: {
@@ -30,7 +42,7 @@ export default {
   },
   computed: {
     squareCounter() {
-      return Math.pow(this.counter, 2)
+      return Math.pow(this.counter, this.raise)
     },
     customTitle() {
       // return this.title || 'Counter'
