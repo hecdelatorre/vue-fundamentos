@@ -1,12 +1,10 @@
 describe('Examples Component', () => {
   test('Debe de ser mayor a 10', () => {
     // Arreglas
-    let value = 0;
+    let value = 6;
     // Estimulo
     value += 5
     // Observar el resultado
-    if (value < 10) {
-      throw `${ value } no es mayor a 10`
-    } 
+    expect( value ).toBeGreaterThan(10)
   })
 })
