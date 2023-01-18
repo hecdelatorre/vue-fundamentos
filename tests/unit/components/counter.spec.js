@@ -3,9 +3,17 @@ import Counter from '@/components/Counter'
 
 describe('Counter', () => {
 
-  test('Debe de hacer match con el snapshot', () => {
+  // test('Debe de hacer match con el snapshot', () => {
+  //   const wrapper = shallowMount( Counter )
+  //   expect( wrapper.html() ).toMatchSnapshot()
+  // })
+  test('h2 debe tener el valor por defecto "Counter"', () => {
     const wrapper = shallowMount( Counter )
-    expect( wrapper.html() ).toMatchSnapshot()
+    // wrapper.findAll('h2')
+    // expect(wrapper.find('h2').exists()).toBe(true)
+    expect(wrapper.find('h2').exists()).toBeTruthy()
+    const h2Value = wrapper.find('h2').text()
+    expect(h2Value).toBe('Counter')
   })
 
 })
