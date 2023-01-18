@@ -5,9 +5,9 @@
     <input type="text" placeholder="Hazme una pregunta" v-model="question">
     <p>Recuerda treminar con un signo de interrogación (?)</p>
 
-    <div>
+    <div v-if="isValidQuestion">
       <h2>{{ question }}</h2>
-      <h1>{{ answer }}</h1>
+      <h1>{{ answer  }}</h1>
     </div>
   </div>
 </template>
@@ -18,20 +18,29 @@ export default {
     return{
       question: null,
       answer: null,
-      img: null
+      img: null,
+      isValidQuestion: false
     }
   },
   methods: {
     async getAnswer() {
+      
       this.answer = 'Pensando...'
       const { answer, image } = await fetch('https://yesno.wtf/api').then(res => res.json())
-      this.answer = answer
+      const lang = {
+        yes: 'Si',
+        no: 'No!',
+        maybe: 'Quizás'
+      }
+      this.answer = lang[answer]
       this.img = image
     }   
   },
   watch: {
     question(value, oldValue) {
+      this.isValidQuestion = false
       if (!value.includes('?')) return
+      this.isValidQuestion = true
       // TODO: Dealizar petición http
       this.getAnswer()
     }
