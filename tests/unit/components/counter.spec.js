@@ -16,4 +16,11 @@ describe('Counter', () => {
     expect(h2Value).toBe('Counter')
   })
 
+  test('El valor por defecto debe ser 100 en el parrafo', () => {
+    const wrapper = shallowMount( Counter )
+    const pValue = wrapper.find('[data-testid="counter"]').text()
+    //expect(pValue[0].text()).toBe('100')
+    expect(pValue).toBe('100')
+  })
+
 })
