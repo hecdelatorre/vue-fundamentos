@@ -25,10 +25,19 @@ describe('Counter', () => {
 
   test('Debe Aumuntar y disminuir el contador', async() => {
     const [ increaseBtn, decreaseBtn ] = wrapper.findAll('button')
-
     await increaseBtn.trigger('click')
     const pValue = wrapper.find('[data-testid="counter"]').text()
     expect(pValue).toBe('101')
+  })
+
+  test('Debe establecer el valor por defecto', () => {
+    const { start, raise } = wrapper.props()
+    // const raise = wrapper.props('raise')
+    console.log(start)
+    console.log(typeof raise)
+        
+    const pValue = wrapper.find('[data-testid="counter"]').text()
+    expect(Number(pValue)).toBe(start)
 
   })
 
