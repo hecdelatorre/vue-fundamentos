@@ -26,6 +26,18 @@ npm run build
 npm run test:unit
 ```
 
+```
+npm run test:unit -- -u
+```
+
+```
+npm run test:unit counter
+```
+
+```
+npm run test:unit indecision
+```
+
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
